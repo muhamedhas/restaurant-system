@@ -1,0 +1,27 @@
+	<!-- navigation to different pages-->
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Restaurant System</a>
+			</div>
+			<ul class="nav navbar-nav navbar-left">
+				<li class="active"><a href="#">Home</a></li>
+				<li ng-class="active"><a href="#!restaurant">Restaurants</a></li>
+                <li><a href="#!reservation">Reservation</a></li>
+            </ul>
+		</div>
+	</nav>
+	<div class="container-fluid">
+
+		<!-- load different pages when clicked on different tabs-->
+		<div ng-view=""></div>
+
+	</div>
+
+	<!-- add the background highlighting when the tab is selected-->
+	<script>
+		$(".nav a").on("click", function () {
+			$(".nav").find(".active").removeClass("active");
+			$(this).parent().addClass("active");
+		});
+	</script>
