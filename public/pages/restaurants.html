@@ -1,0 +1,39 @@
+<div class="row" ng-controller="restaurantCtrl">
+
+	<!-- Show the list of Restaurants Available-->
+	<div class="col-md-5">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3> Restaurants Listing </h3>
+			</div>
+			<div class="panel-body" style="height:800px;overflow:auto;">
+				<div class="panel panel-default" ng-repeat="restaurant in restaurants">
+					<div class="panel-heading">
+						<h4>{{restaurant.name}}</h4>
+						<h5>{{restaurant.address}}</h5>
+						<h5><strong>Cuisine Offered</strong> {{restaurant.cuisine}}
+						</h5>
+						<button class="btn btn-primary" style="float: right;" ng-click="editRestaurant(restaurant._id);">Edit</button>
+						&nbsp; &nbsp;
+						<button class="btn btn-danger" style="float: right;" ng-click="deleteRestaurant(restaurant._id)">Delete</button>
+					</div>
+					<div class="panel-body">
+
+						<h5>Table Available</h5>
+						<table class="table table-hover table-condensed table-bordered">
+							<tr>
+								<th>Table No.</th>
+								<th>Table Capacity</th>
+							</tr>
+							<tr ng-repeat="table in restaurant.tables">
+								<td>{{table.id}}</td>
+								<td>{{table.capacity}}</td>
+							</tr>
+						</table>
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
