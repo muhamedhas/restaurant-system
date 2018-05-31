@@ -3,14 +3,14 @@ let express = require('express')
 let app = express()
 let bodyParser = require('body-parser')
 
-var constants = require('./constants')
+//var constants = require('./constants')
 
 // db dependencies
 var MongoClient = require('mongodb').MongoClient
 var ObjectId = require('mongodb').ObjectID
-var url = constants.DB_URL
+//var url = constants.DB_URL
 
-var query = require('./query')
+//var query = require('./query')
 
 app.use(bodyParser.json())
 app.use(express.static('../public'))
@@ -33,4 +33,9 @@ app.get('/restaurants/:_id?', (req, res) => {
 			db.close()
 		})
 	})
+})
+
+// listen
+app.listen(3000, function () {
+	console.log('Server is running')
 })
