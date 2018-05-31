@@ -12,6 +12,20 @@ app.controller('restaurantCtrl', ['$scope', '$http', 'restaurantService', functi
 			$scope.restaurants = res.data
 		})
     }
+
+    // initialize 
+	$scope.getAllRestaurants()
+
+
+	$scope.particular = []
+	$scope.editRestaurant = function (id) {
+		console.log('From Edit: ', id)
+		restaurantService.listRestaurants(id).then(function (success) {
+			$scope.particular = success.data
+			console.log('particualar Restaurant is:\n', $scope.particular)
+		})
+
+	}
     
     // save one restaurant
 	$scope.saveRestaurant = function (info) {
@@ -67,4 +81,27 @@ app.controller('restaurantCtrl', ['$scope', '$http', 'restaurantService', functi
 	$scope.deleteTable = function (id, index) {
 		var value = document.getElementById(id).value
 		$scope.particular[0].tables.splice(index, 1)
-	}
+    }
+// save all the modification to tables so far
+$scope.saveTable = function (restaurantId) {		
+
+    // for tables which are added
+    for (var j = 0; j < $scope.tables.length; j++) {
+        $scope.particular[0].tables.push($scope.tables[j])
+    }
+
+    console.log('Particualr inside save function after modify', $scope.particular[0])
+
+    restaurantService.updateRestaurant(restaurantId, $scope.particular[0].tables).then(function (success) {
+
+        // call to see the updated data
+        $scope.getAllRestaurants()
+    })
+
+    $scope.particular = {}
+    $scope.nameEdit = ''
+    $scope.capacityEdit = ''
+    $scope.tables = []
+}
+}])
+    
