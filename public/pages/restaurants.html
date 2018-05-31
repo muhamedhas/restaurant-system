@@ -36,4 +36,40 @@
 				</div>
 			</div>
 		</div>
-	</div>
+    </div>
+    
+    <!-- Add a table to the restaurant section -->
+    <table class="table no-border">
+        <tr>
+            <th class="no-border">
+                Table<input type="text" ng-model="name">
+            </th>
+            <th class="no-border">
+                Table Capacity<input type="text" ng-model="capacity">
+            </th>
+            <th class="no-border">
+                <button class="btn btn-primary btn-small" ng-click="addTable()">Add Table</button>
+            </th>
+        </tr>
+        <tr>
+            <td colspan="2"> <b>Tables Added</b>
+                <ul>
+                    <li style="list-style: none;">Number Capacity</li>
+                    <li ng-repeat="t in tables" style="list-style: none;">{{t.id}} &nbsp; &nbsp; &nbsp; &nbsp; {{t.capacity}}
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td align="right" style="float:right;">
+                <button class="btn btn-success" ng-click="saveMessage = true; saveRestaurant(restaurantInfo)">Save</button>
+
+            </td>
+        </tr>
+
+    </table>
+    <div ng-if="saveMessage">Restaurant Added Successfully...!! </div>
+</div>
+</div>
