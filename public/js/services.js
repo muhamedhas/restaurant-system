@@ -12,3 +12,29 @@ app.service('restaurantService', ['$http', function ($http) {
 			url: (id) ? baseUrl + '/restaurants/' + id : baseUrl + '/restaurants'
 		})
 	}
+// add a New Restaurant
+this.addRestaurant = function (data) {
+    return $http({
+        method: 'POST',
+        url: baseUrl + '/addrestaurant',
+        data: data
+    })
+}
+
+// delete an existing Restaurant
+this.deleteRestaurant = function (id) {
+    return $http({
+        method: 'DELETE',
+        url: baseUrl + '/deleterestaurant/' + id
+    })
+}
+
+// update Restaurant with tables modificaion
+this.updateRestaurant = function (id, data) {
+    return $http({
+        method: 'PUT',
+        url: baseUrl + '/updaterestaurant/' + id,
+        data: data
+    })
+}
+}])
