@@ -28,35 +28,4 @@ app.controller('customerCtrl', ['$scope', 'customerService', function ($scope, c
 			$scope.reviewRestaurant = result.name
         }
         
-        // submit reviews to save it in db
-		$scope.submitReview = function () {
-			var data = {
-				"name": ($scope.reviewerName !== '') ? $scope.reviewerName : 'Anonymous  ',
-				"reviews": ' said: ' + $scope.review
-			}
-			$scope.reviews.push(data)
-
-			console.log('review is: ', $scope.reviews)
-			customerService.sendReview($scope.restaurantId, $scope.reviews)
-        }
         
-        // add a new booking
-		$scope.bookTable = function () {
-			$scope.bookings.push({ "name": $scope.tableName, "date": new Date() })
-			console.log('booking is now: ', $scope.bookings)
-
-		}
-
-		// delete an existing booking
-		$scope.cancelBooking = function (index) {
-			$scope.bookings.splice(index, 1)
-			console.log('booking is now: ', $scope.bookings)
-		}
-
-		// upadate bookings after modification
-		$scope.updateBookings = function () {
-			customerService.updateBooking($scope.restaurantId, $scope.bookings)
-			$scope.tableName = ''
-		}
-	}
-}])
