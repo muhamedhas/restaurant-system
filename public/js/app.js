@@ -18,6 +18,10 @@ app.config(function ($routeProvider) {
 		.when('/editrestaurant', {
 			templateUrl: "../pages/editRestaurant.html"
 		})
+		
+		.when('/login', {
+			templateUrl: "../pages/login.html"
+		})
 })
 
 app.directive('myEnter', function () {
